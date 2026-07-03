@@ -135,11 +135,13 @@ import DashboardMockup from './DashboardMockup.astro';
   .download-btn:active { transform: translateY(0); }
   .win-logo { flex-shrink: 0; }
 
-  .hero-visual { display: flex; justify-content: center; }
+  .hero-visual { display: flex; justify-content: center; min-width: 0; }
 
   /* Floating glow frame around the dashboard mockup */
   .mockup-frame {
     position: relative;
+    width: 100%;
+    max-width: 420px;
     animation: floatY 6s ease-in-out infinite;
   }
   .mockup-frame::before {

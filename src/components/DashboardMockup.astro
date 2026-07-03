@@ -85,6 +85,7 @@ const gradId = `chromeGrad-${mode}`;
 
 <style>
   .mockup {
+    width: 100%;
     border-radius: var(--radius-lg);
     padding: 20px;
     display: flex;
@@ -233,4 +234,17 @@ const gradId = `chromeGrad-${mode}`;
   }
   .mute-toggle.muted { opacity: .45; }
   .mute-toggle:hover { border-color: var(--line-strong); }
+
+  @media (max-width: 420px) {
+    .mockup { padding: 14px; gap: 10px; }
+    .telemetry { padding: 8px 12px; }
+    .gauge { width: 108px; }
+    .readout-gear { font-size: 30px; }
+    .readout-label { font-size: 10px; letter-spacing: 2px; }
+    .readout-cmd { white-space: normal; }
+    .gear-row { gap: 6px; }
+    .gbtn { padding: 7px 3px; }
+    .gbtn b { font-size: 14px; }
+    .gbtn span { font-size: 7px; letter-spacing: 1px; }
+  }
 </style>

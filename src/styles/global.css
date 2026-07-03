@@ -33,7 +33,6 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  zoom: 1.4;
   font-family: "Segoe UI", system-ui, sans-serif;
   color: var(--text);
   background:
@@ -42,6 +41,13 @@ body {
     radial-gradient(50% 40% at 50% 0%, rgba(180, 156, 252, .10) 0%, transparent 60%),
     var(--bg);
   overflow-x: hidden;
+}
+
+/* Desktop-only magnification tuned to match a specific 1920px reference screenshot --
+   scoped above phone/tablet widths so mobile renders at normal scale instead of an
+   effectively narrower simulated viewport. */
+@media (min-width: 701px) {
+  body { zoom: 1.4; }
 }
 
 .wrap {
