@@ -19,6 +19,21 @@ if (nav) {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
+/* ---------- Live GitHub star count ---------- */
+const starEls = document.querySelectorAll('[data-star-count]');
+if (starEls.length) {
+  fetch('https://api.github.com/repos/Sikorsky3301/Claude-Model-Shifter')
+    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then((data) => {
+      const count = data.stargazers_count;
+      if (typeof count === 'number') {
+        const label = count === 1 ? 'Star' : 'Stars';
+        starEls.forEach((el) => { el.textContent = `${count} ${label} on GitHub`; });
+      }
+    })
+    .catch(() => {}); // keep the static "Star on GitHub" fallback text on any failure
+}
+
 /* ---------- Cursor-tracking hero spotlight ---------- */
 const spotlight = document.querySelector('[data-spotlight]');
 if (spotlight && !reduceMotion) {
