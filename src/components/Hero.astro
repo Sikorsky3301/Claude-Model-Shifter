@@ -1,0 +1,160 @@
+---
+import DashboardMockup from './DashboardMockup.astro';
+---
+<section class="hero" id="top">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
+  <div class="spotlight" data-spotlight></div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow" style="animation: fadeUp 700ms both">
+        <span class="live-dot" aria-hidden="true"></span>
+        A car-style model shifter for Claude Code
+      </p>
+      <h1 style="animation: fadeUp 700ms 80ms both, textShimmer 5s linear infinite 900ms">
+        Shift your model.<br />Not your workflow.
+      </h1>
+      <p class="hero-sub" style="animation: fadeUp 700ms 160ms both">
+        No dropdowns, no memorized flags — just grab the stick and slot it home.
+        Claude Shifter locks onto your terminal and fires
+        <code>/model &lt;name&gt;</code> instantly, every time you shift.
+      </p>
+      <div class="hero-ctas" style="animation: fadeUp 700ms 240ms both">
+        <a href="/buy" class="btn download-btn">
+          <svg class="win-logo" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <g transform="rotate(-8 12 12)">
+              <rect x="3" y="3" width="8" height="8" rx="1" />
+              <rect x="13" y="3" width="8" height="8" rx="1" />
+              <rect x="3" y="13" width="8" height="8" rx="1" />
+              <rect x="13" y="13" width="8" height="8" rx="1" />
+            </g>
+          </svg>
+          Download for Windows
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="mockup-frame">
+        <DashboardMockup mode="hero" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-top: 168px;
+    padding-bottom: 96px;
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: .8;
+    z-index: -2;
+    animation: drift 18s ease-in-out infinite;
+  }
+  .blob-a { width: 420px; height: 420px; top: -120px; right: 6%; background: rgba(180,156,252,.22); animation-duration: 16s; }
+  .blob-b { width: 360px; height: 360px; bottom: -100px; left: 4%; background: rgba(122,84,44,.20); animation-duration: 22s; animation-delay: 2s; }
+  .blob-c { width: 260px; height: 260px; top: 30%; left: 40%; background: rgba(90,60,120,.16); animation-duration: 20s; animation-delay: 4s; }
+
+  /* Follows the cursor -- position set via --mx/--my in interactions.js */
+  .spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 15%), rgba(180,156,252,.16), transparent 62%);
+    transition: background 120ms linear;
+  }
+
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-copy .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulseDot 2s ease-out infinite;
+  }
+  .hero-copy h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin: 14px 0 18px;
+    background: linear-gradient(100deg, var(--text) 35%, var(--accent) 50%, var(--text) 65%);
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .hero-sub {
+    max-width: 440px;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .hero-sub code {
+    font-family: var(--font-mono);
+    background: rgba(255,255,255,.06);
+    padding: 2px 6px;
+    border-radius: 5px;
+    color: var(--text);
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .download-btn {
+    font-size: 15px;
+    padding: 15px 28px;
+    background: rgba(180,156,252,.06);
+    border: 1.5px solid rgba(180,156,252,.55);
+    color: var(--accent);
+    animation: ctaPulse 3.2s ease-in-out infinite;
+  }
+  .download-btn:hover {
+    background: rgba(180,156,252,.16);
+    border-color: var(--accent);
+    box-shadow: 0 0 26px rgba(180,156,252,.35);
+    transform: translateY(-2px);
+    animation-play-state: paused;
+  }
+  .download-btn:active { transform: translateY(0); }
+  .win-logo { flex-shrink: 0; }
+
+  .hero-visual { display: flex; justify-content: center; }
+
+  /* Floating glow frame around the dashboard mockup */
+  .mockup-frame {
+    position: relative;
+    animation: floatY 6s ease-in-out infinite;
+  }
+  .mockup-frame::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: calc(var(--radius-lg) + 3px);
+    background: conic-gradient(from 0deg, rgba(180,156,252,.65), transparent 28%, transparent 72%, rgba(180,156,252,.65));
+    filter: blur(16px);
+    opacity: .55;
+    z-index: -1;
+    animation: spin360 7s linear infinite;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero { padding-top: 120px; }
+  }
+</style>

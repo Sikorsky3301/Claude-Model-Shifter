@@ -1,0 +1,13 @@
+# build output
+dist/
+.astro/
+.vercel/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# editor/OS
+.DS_Store
