@@ -47,8 +47,11 @@ import DashboardMockup from './DashboardMockup.astro';
 <style>
   .hero {
     position: relative;
-    padding-top: 168px;
-    padding-bottom: 96px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 96px;
+    padding-bottom: 56px;
     overflow: hidden;
   }
   .blob {
@@ -75,6 +78,7 @@ import DashboardMockup from './DashboardMockup.astro';
 
   .hero-inner {
     position: relative;
+    width: 100%;
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     gap: 48px;
@@ -155,6 +159,6 @@ import DashboardMockup from './DashboardMockup.astro';
 
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; }
-    .hero { padding-top: 120px; }
+    .hero { min-height: auto; padding-top: 120px; }
   }
 </style>
