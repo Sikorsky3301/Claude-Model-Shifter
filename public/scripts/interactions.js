@@ -22,7 +22,7 @@ if (nav) {
 /* ---------- Live GitHub star count ---------- */
 const starEls = document.querySelectorAll('[data-star-count]');
 if (starEls.length) {
-  fetch('https://api.github.com/repos/Sikorsky3301/Claude-Model-Shifter')
+  fetch('https://api.github.com/repos/Sikorsky3301/-Claude-Model-Shifter')
     .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
     .then((data) => {
       const count = data.stargazers_count;
