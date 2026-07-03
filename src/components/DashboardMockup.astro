@@ -85,7 +85,6 @@ const gradId = `chromeGrad-${mode}`;
 
 <style>
   .mockup {
-    width: 100%;
     border-radius: var(--radius-lg);
     padding: 20px;
     display: flex;
@@ -234,6 +233,12 @@ const gradId = `chromeGrad-${mode}`;
   }
   .mute-toggle.muted { opacity: .45; }
   .mute-toggle:hover { border-color: var(--line-strong); }
+
+  /* Mobile only -- lets the mockup shrink below its 420px desktop max-width
+     instead of overflowing a narrow flex parent. Desktop rules above are untouched. */
+  @media (max-width: 900px) {
+    .mockup { width: 100%; }
+  }
 
   @media (max-width: 420px) {
     .mockup { padding: 14px; gap: 10px; }

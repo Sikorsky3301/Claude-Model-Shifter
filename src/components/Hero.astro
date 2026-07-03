@@ -135,13 +135,11 @@ import DashboardMockup from './DashboardMockup.astro';
   .download-btn:active { transform: translateY(0); }
   .win-logo { flex-shrink: 0; }
 
-  .hero-visual { display: flex; justify-content: center; min-width: 0; }
+  .hero-visual { display: flex; justify-content: center; }
 
   /* Floating glow frame around the dashboard mockup */
   .mockup-frame {
     position: relative;
-    width: 100%;
-    max-width: 420px;
     animation: floatY 6s ease-in-out infinite;
   }
   .mockup-frame::before {
@@ -159,5 +157,7 @@ import DashboardMockup from './DashboardMockup.astro';
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero { padding-top: 120px; }
+    .hero-visual { min-width: 0; }
+    .mockup-frame { width: 100%; max-width: 420px; }
   }
 </style>
