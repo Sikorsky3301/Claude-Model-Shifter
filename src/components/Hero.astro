@@ -58,9 +58,9 @@ import DashboardMockup from './DashboardMockup.astro';
     z-index: -2;
     animation: drift 18s ease-in-out infinite;
   }
-  .blob-a { width: 420px; height: 420px; top: -120px; right: 6%; background: rgba(180,156,252,.22); animation-duration: 16s; }
+  .blob-a { width: 420px; height: 420px; top: -120px; right: 6%; background: rgba(224,164,92,.22); animation-duration: 16s; }
   .blob-b { width: 360px; height: 360px; bottom: -100px; left: 4%; background: rgba(122,84,44,.20); animation-duration: 22s; animation-delay: 2s; }
-  .blob-c { width: 260px; height: 260px; top: 30%; left: 40%; background: rgba(90,60,120,.16); animation-duration: 20s; animation-delay: 4s; }
+  .blob-c { width: 260px; height: 260px; top: 30%; left: 40%; background: rgba(150,110,40,.18); animation-duration: 20s; animation-delay: 4s; }
 
   /* Follows the cursor -- position set via --mx/--my in interactions.js */
   .spotlight {
@@ -68,7 +68,7 @@ import DashboardMockup from './DashboardMockup.astro';
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 15%), rgba(180,156,252,.16), transparent 62%);
+    background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 15%), rgba(224,164,92,.16), transparent 62%);
     transition: background 120ms linear;
   }
 
@@ -119,15 +119,15 @@ import DashboardMockup from './DashboardMockup.astro';
   .download-btn {
     font-size: 15px;
     padding: 15px 28px;
-    background: rgba(180,156,252,.06);
-    border: 1.5px solid rgba(180,156,252,.55);
+    background: rgba(224,164,92,.06);
+    border: 1.5px solid rgba(224,164,92,.55);
     color: var(--accent);
     animation: ctaPulse 3.2s ease-in-out infinite;
   }
   .download-btn:hover {
-    background: rgba(180,156,252,.16);
+    background: rgba(224,164,92,.16);
     border-color: var(--accent);
-    box-shadow: 0 0 26px rgba(180,156,252,.35);
+    box-shadow: 0 0 26px rgba(224,164,92,.35);
     transform: translateY(-2px);
     animation-play-state: paused;
   }
@@ -178,7 +178,7 @@ import DashboardMockup from './DashboardMockup.astro';
     position: absolute;
     inset: -3px;
     border-radius: calc(var(--radius-lg) + 3px);
-    background: conic-gradient(from 0deg, rgba(180,156,252,.65), transparent 28%, transparent 72%, rgba(180,156,252,.65));
+    background: conic-gradient(from 0deg, rgba(224,164,92,.65), transparent 28%, transparent 72%, rgba(224,164,92,.65));
     filter: blur(16px);
     opacity: .55;
     z-index: -1;

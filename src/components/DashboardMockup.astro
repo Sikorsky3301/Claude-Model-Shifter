@@ -41,10 +41,10 @@ const gradId = `chromeGrad-${mode}`;
     <svg class="track" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet">
       <defs>
         <radialGradient id={gradId} cx="38%" cy="28%" r="80%">
-          <stop offset="0%" stop-color="#ffffff" />
-          <stop offset="40%" stop-color="#cdd2d8" />
-          <stop offset="75%" stop-color="#99a1aa" />
-          <stop offset="100%" stop-color="#666d75" />
+          <stop offset="0%" stop-color="#fbe9be" />
+          <stop offset="40%" stop-color="#d8ad63" />
+          <stop offset="75%" stop-color="#9c7233" />
+          <stop offset="100%" stop-color="#5c3f17" />
         </radialGradient>
       </defs>
       <circle cx="150" cy="110" r="104" fill={`url(#${gradId})`} class="disc" />
@@ -126,15 +126,15 @@ const gradId = `chromeGrad-${mode}`;
 
   .readout { text-align: right; min-width: 0; }
   .readout-gear {
-    font-family: var(--font-display);
-    font-size: 40px; font-weight: 700; line-height: 1; letter-spacing: -1px;
+    font-family: var(--font-readout);
+    font-size: 38px; font-weight: 800; line-height: 1;
     color: var(--accent);
-    text-shadow: 0 0 18px rgba(180,156,252,.5);
+    text-shadow: 0 0 18px rgba(224,164,92,.5);
   }
   .readout-label {
-    font-family: var(--font-display);
-    font-size: 12px; font-weight: 600; letter-spacing: 3px;
-    color: var(--accent); opacity: .9; margin-top: 2px;
+    font-family: var(--font-readout);
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--accent); opacity: .9; margin-top: 3px;
   }
   .readout-cmd {
     font-size: 11px; color: var(--muted); font-family: var(--font-mono);
@@ -165,8 +165,8 @@ const gradId = `chromeGrad-${mode}`;
   .gbtn span { font-family: var(--font-display); font-size: 8px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
   .gbtn:hover { border-color: var(--line-strong); transform: translateY(-1px); }
   .gbtn.active {
-    border-color: rgba(180,156,252,.55);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 0 14px rgba(180,156,252,.28);
+    border-color: rgba(224,164,92,.55);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 0 14px rgba(224,164,92,.28);
   }
   .gbtn.active b { color: var(--accent); }
 
@@ -176,7 +176,7 @@ const gradId = `chromeGrad-${mode}`;
   }
   .track { position: absolute; inset: 0; width: 100%; height: 100%; }
   .disc { filter: drop-shadow(0 10px 20px rgba(0,0,0,.6)); }
-  .rail { stroke: #0a0a0c; stroke-width: 26; stroke-linecap: round; }
+  .rail { stroke: #241708; stroke-width: 26; stroke-linecap: round; }
 
   .knob {
     position: absolute;
@@ -203,20 +203,23 @@ const gradId = `chromeGrad-${mode}`;
     100% { transform: translate(-50%, -50%) scale(1); }
   }
   .knob.seating { animation: knobSeat 240ms cubic-bezier(.34, 1.4, .5, 1) both; }
+  /* wood-grain gear knob */
   .knob-top {
     position: absolute; inset: 0;
     border-radius: 50%;
-    background: radial-gradient(55% 55% at 35% 26%, #55555e 0%, #232327 45%, #0b0b0e 100%);
-    border: 2px solid #3c4148;
-    box-shadow: inset 0 3px 6px rgba(255,255,255,.18), inset 0 -8px 14px rgba(0,0,0,.7), 0 8px 18px rgba(0,0,0,.7);
+    background:
+      repeating-linear-gradient(114deg, rgba(0,0,0,.10) 0 2px, transparent 2px 5px),
+      radial-gradient(55% 55% at 35% 26%, #8a6338 0%, #56381a 48%, #2c1a0a 100%);
+    border: 2px solid #1c1206;
+    box-shadow: inset 0 3px 6px rgba(255,240,210,.16), inset 0 -8px 14px rgba(0,0,0,.7), 0 8px 18px rgba(0,0,0,.7);
     transition: box-shadow var(--micro);
   }
   .knob.dragging .knob-top {
     box-shadow: inset 0 3px 6px rgba(255,255,255,.18), inset 0 -8px 14px rgba(0,0,0,.7), 0 16px 30px rgba(0,0,0,.8);
   }
   .knob-pattern { position: absolute; inset: 10%; width: 80%; height: 80%; pointer-events: none; }
-  .pb-line { stroke: #d6dade; stroke-width: 2; stroke-linecap: round; }
-  .pb-num { fill: #eceff2; font-size: 9px; font-weight: 700; font-family: "Segoe UI", system-ui, sans-serif; text-anchor: middle; }
+  .pb-line { stroke: #f4e4c4; stroke-width: 2; stroke-linecap: round; }
+  .pb-num { fill: #f8ecd4; font-size: 9px; font-weight: 700; font-family: "Segoe UI", system-ui, sans-serif; text-anchor: middle; }
 
   .mute-toggle {
     position: absolute;

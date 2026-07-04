@@ -1,18 +1,20 @@
 :root {
-  --bg: #060607;
-  --panel: rgba(19, 19, 22, .82);
-  --slab: #0a0a0d;
-  --btn-hi: #26262b;
-  --btn-lo: #17171b;
-  --line: rgba(255,255,255,.07);
-  --line-strong: rgba(255,255,255,.14);
-  --accent: #b49cfc;
-  --accent-dim: #4c3b7a;
-  --chrome-1: #f2f4f6;
-  --chrome-2: #9aa3ad;
-  --chrome-3: #4c545d;
-  --text: #ececf1;
-  --muted: #8f8f9a;
+  /* Heritage palette -- matches the app's only theme (brass, wood, warm amber) */
+  --bg: #17110a;
+  --panel: rgba(35, 26, 15, .82);
+  --slab: #130d05;
+  --btn-hi: #3a2c18;
+  --btn-lo: #241a0d;
+  --line: rgba(255,240,210,.08);
+  --line-strong: rgba(255,240,210,.17);
+  --accent: #e0a45c;
+  --accent-dim: #6b4a1f;
+  /* shifter disc = aged brass */
+  --chrome-1: #fbe9be;
+  --chrome-2: #d8ad63;
+  --chrome-3: #5c3f17;
+  --text: #f2e8d6;
+  --muted: #b09a78;
   --green: #38d67a;
   --red: #e8433a;
 
@@ -22,6 +24,8 @@
 
   --font-display: "Bahnschrift", "Segoe UI Semibold", system-ui, sans-serif;
   --font-mono: Consolas, "SFMono-Regular", monospace;
+  /* warm serif for the model readout, matching the app's Heritage readout */
+  --font-readout: "Cambria", Georgia, "Times New Roman", serif;
 
   --radius-lg: 22px;
   --shadow-card: 0 16px 40px rgba(0,0,0,.5);
@@ -36,9 +40,9 @@ body {
   font-family: "Segoe UI", system-ui, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(70% 55% at 88% 92%, rgba(122, 84, 44, .28) 0%, transparent 60%),
-    radial-gradient(60% 45% at 8% 90%, rgba(90, 60, 120, .14) 0%, transparent 60%),
-    radial-gradient(50% 40% at 50% 0%, rgba(180, 156, 252, .10) 0%, transparent 60%),
+    radial-gradient(70% 55% at 88% 92%, rgba(160, 96, 30, .30) 0%, transparent 60%),
+    radial-gradient(60% 45% at 8% 90%, rgba(120, 70, 20, .18) 0%, transparent 60%),
+    radial-gradient(50% 40% at 50% 0%, rgba(224, 164, 92, .12) 0%, transparent 60%),
     var(--bg);
   overflow-x: hidden;
 }
@@ -114,8 +118,8 @@ section { position: relative; padding: 96px 0; }
   background: rgba(255,255,255,.03);
 }
 .btn-ghost:hover {
-  border-color: rgba(180,156,252,.5);
-  box-shadow: 0 0 22px rgba(180,156,252,.28);
+  border-color: rgba(224,164,92,.5);
+  box-shadow: 0 0 22px rgba(224,164,92,.28);
   transform: translateY(-2px);
 }
 
@@ -208,8 +212,8 @@ section { position: relative; padding: 96px 0; }
   100% { box-shadow: 0 0 0 0 rgba(56,214,122,0); }
 }
 @keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(180,156,252,.25); }
-  50%      { box-shadow: 0 0 22px 4px rgba(180,156,252,.3); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(224,164,92,.25); }
+  50%      { box-shadow: 0 0 22px 4px rgba(224,164,92,.3); }
 }
 
 @media (prefers-reduced-motion: reduce) {
