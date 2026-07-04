@@ -150,7 +150,7 @@ function wireDashboard(root, { autoplay }) {
   buttons.forEach((b) => {
     b.addEventListener('click', () => {
       const gear = GEARS.find((g) => g.key === b.dataset.gbtn);
-      if (gear) engage(gear);
+      if (gear) { audioUnlocked = true; engage(gear); }
     });
   });
 
@@ -203,6 +203,7 @@ function wireDashboard(root, { autoplay }) {
       if (!dragging) return;
       dragging = false;
       knob.classList.remove('dragging');
+      audioUnlocked = true;
       engage(nearestGate(constrain(stagePercent(e))));
     });
     knob.addEventListener('pointercancel', () => {
@@ -219,32 +220,62 @@ function wireDashboard(root, { autoplay }) {
     autoplayTimer = setInterval(() => {
       i = (i + 1) % GEARS.length;
       setGear(GEARS[i]);
+      // once the user has interacted, let the auto-demo make sound too
+      if (audioUnlocked) playGearSound(GEARS[i].key);
     }, 1800);
   } else {
     setGear(GEARS[0]);
   }
 }
 
-/* ---------- Optional click-to-play gear sounds (showcase only) ---------- */
+/* ---------- Gear shift sounds ---------- */
+const SOUND_VOL = 0.6;
 const soundCache = {};
-function getSound(key) {
-  const file = key === 'opus' ? 'opus.mp3'
+function fileFor(key) {
+  return key === 'opus' ? 'opus.mp3'
     : key === 'fable' ? 'fable-acceleration.wav'
     : 'gear-shift.wav';
+}
+function getSound(key) {
+  const file = fileFor(key);
   if (!soundCache[file]) {
     const a = new Audio(`/sounds/${file}`);
-    a.volume = 0.35;
+    a.preload = 'auto';
+    a.volume = SOUND_VOL;
     soundCache[file] = a;
   }
   return soundCache[file];
 }
 let soundEnabled = true;
+// Browsers block audio until the first user gesture. Once the user has clicked
+// or dragged a gear, audio is unlocked -- after that the auto-cycling mockup
+// plays the shift sound too, so it feels like the real app.
+let audioUnlocked = false;
 function playGearSound(key) {
   if (!soundEnabled) return;
   const sound = getSound(key);
   sound.currentTime = 0;
   sound.play().catch(() => {});
 }
+
+// Prime all clips (muted) on the first pointer interaction so the first real
+// shift sound has no decode delay.
+function primeSounds() {
+  ['gear-shift.wav', 'opus.mp3', 'fable-acceleration.wav'].forEach((file) => {
+    if (!soundCache[file]) {
+      const a = new Audio(`/sounds/${file}`);
+      a.preload = 'auto';
+      a.volume = SOUND_VOL;
+      soundCache[file] = a;
+    }
+  });
+  Object.values(soundCache).forEach((a) => {
+    a.muted = true;
+    const p = a.play();
+    if (p && typeof p.then === 'function') p.then(() => { a.pause(); a.currentTime = 0; a.muted = false; }).catch(() => { a.muted = false; });
+  });
+}
+window.addEventListener('pointerdown', primeSounds, { once: true });
 
 const muteToggle = document.querySelector('[data-mute-toggle]');
 if (muteToggle) {
